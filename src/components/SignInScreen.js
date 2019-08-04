@@ -1,17 +1,17 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
-  AsyncStorage
+  StyleSheet
 } from 'react-native';
 import AppText from './AppText';
 import FormTextInput from './FormTextInput';
 import * as globalStyles from '../styles/global';
 import LinkButton from './LinkButton';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = {
-    title: 'Sign in to continue...',
+    title: 'Sign in to continue',
   };
 
   constructor(props) {

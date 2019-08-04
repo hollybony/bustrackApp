@@ -1,8 +1,14 @@
 import React from "react";
-import { View, Button } from "react-native";
+import {
+    View,
+    StyleSheet,
+    Button
+} from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
+
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
-        title: 'Welcome to the app!',
+        title: 'Welcome to Bustrack!',
     };
 
     render() {
@@ -23,3 +29,11 @@ export default class HomeScreen extends React.Component {
         this.props.navigation.navigate('Auth');
     };
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
