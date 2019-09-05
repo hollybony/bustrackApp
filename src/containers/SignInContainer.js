@@ -1,15 +1,15 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SignIn from '../components/SignIn'
-import { loadToken } from '../actions/authActions';
+import { loadToken } from '../actions/signInActions';
 
 // const mapStateToProps = state => ({
-//   auth: state.auth
+//   signIn: state.signIn
 // });
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    signIn: state.signIn
   }
 };
 

@@ -7,8 +7,10 @@ import {
   Alert
 } from 'react-native';
 import FormTextInput from './FormTextInput';
+import FormPwdInput from './FormPwdInput';
 import LinkButton from './LinkButton';
-import AppText from './AppText';
+import Button from './Button';
+import Title from './Title';
 import * as globalStyles from '../styles/global';
 import AsyncStorage from '@react-native-community/async-storage';
 import NetInfo from "@react-native-community/netinfo";
@@ -25,13 +27,15 @@ export default class SignIn extends React.Component {
       password: 'the-pass',
       connected: true
     };
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-      loading: nextProps.auth.loading,
-      errors: nextProps.auth.errors,
-      response: nextProps.auth.response
+      loading: nextProps.signIn.loading,
+      errors: nextProps.signIn.errors,
+      response: nextProps.signIn.response
     };
   }
 
@@ -57,10 +61,8 @@ export default class SignIn extends React.Component {
     this.setState({ password: password });
   }
 
-  //TODO validate whether async is necessary here
   handleSubmit = event => {
     event.preventDefault();
-    console.log('Handle submit.');
     if (this.state.connected) {
       this.props.loadToken({
         usernameOrEmail: this.state.email,
@@ -69,8 +71,6 @@ export default class SignIn extends React.Component {
     } else {
       Alert.alert('There is no connection.');
     }
-    //await AsyncStorage.setItem('userToken', 'abc');
-    //
   };
 
   goToSignUp = () => {
@@ -81,9 +81,7 @@ export default class SignIn extends React.Component {
     const listStyles = globalStyles.COMMON_STYLES.pageContainer;
     const { loading, errors, response } = this.state;
     if (response) {
-      console.log('sign in response');
-      console.log(response);
-      AsyncStorage.setItem("token", response).then(() => this.props.navigation.navigate('App'));
+      AsyncStorage.setItem('userToken', response).then(() => this.props.navigation.navigate('App'));
     }
     return (
       loading ? (
@@ -96,20 +94,20 @@ export default class SignIn extends React.Component {
         </View>
       ) : (
           <View style={[globalStyles.COMMON_STYLES.pageContainer, styles.container]}>
-            <AppText>Bustrack App</AppText>
+            <Title>Bustrack App</Title>
             <View style={styles.form}>
               <FormTextInput
                 value={this.state.email}
                 onChangeText={this.handleEmailChange}
                 placeholder="User name or Email"
               />
-              <FormTextInput
+              <FormPwdInput
                 value={this.state.password}
                 onChangeText={this.handlePasswordChange}
                 placeholder="Password"
               />
               <LinkButton onPress={this.handleSubmit}>Sign In</LinkButton>
-              <LinkButton onPress={this.goToSignUp}>Create account</LinkButton>
+              <Button onPress={this.goToSignUp}>Create account</Button>
             </View>
             <Text>{errors}</Text>
           </View>

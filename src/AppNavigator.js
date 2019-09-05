@@ -1,13 +1,13 @@
 import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation';
-import HomeScreen from './components/HomeScreen';
 import AuthLoadingScreen from './components/AuthLoadingScreen';
 import OtherScreen from './components/OtherScreen';
+import HomeContainer from './containers/HomeContainer';
 import SignInContainer from './containers/SignInContainer';
 import SignUpContainer from './containers/SignUpContainer';
 
 const AppStack = createStackNavigator(
     {
-        Home: HomeScreen,
+        Home: HomeContainer,
         Other: OtherScreen
     });
 

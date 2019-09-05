@@ -1,7 +1,8 @@
 import {
   GET_TOKEN_REQUEST,
   GET_TOKEN_FAILURE,
-  GET_TOKEN_SUCCESS
+  GET_TOKEN_SUCCESS,
+  REMOVE_TOKEN
 } from './actionTypes';
 import { reshapeErrors } from '../util/dataTransformations'
 
@@ -39,5 +40,12 @@ export const loadToken = credentials => {
         console.log('There has been a problem with your fetch operation: ' + error.message);
         dispatch({ type: GET_TOKEN_FAILURE, payload: error.message });
       })
+  };
+};
+
+export const removeToken = () => {
+  console.log('remove token');
+  return dispatch => {
+    dispatch({ type: REMOVE_TOKEN })
   };
 };

@@ -3,7 +3,7 @@ import platformStyles from './platform';
 
 const { PAGE_CONTAINER_STYLE, TEXT_STYLE } = platformStyles;
 
-export const BG_COLOR = '#336699';
+export const BG_COLOR = '#14c79b';
 export const BAR_COLOR = '#4e4d52';
 export const TEXT_COLOR = '#e5dbda';
 export const HEADER_TEXT_COLOR = '#fff';

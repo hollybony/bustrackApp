@@ -7,8 +7,9 @@ import {
   Alert
 } from 'react-native';
 import FormTextInput from './FormTextInput';
-import LinkButton from './LinkButton';
-import AppText from './AppText';
+import FormPwdInput from './FormPwdInput';
+import Button from './Button';
+import Title from './Title';
 import * as globalStyles from '../styles/global';
 
 export default class Signup extends React.Component {
@@ -92,7 +93,7 @@ export default class Signup extends React.Component {
         </View>
       ) : (
           <View style={[globalStyles.COMMON_STYLES.pageContainer, styles.container]}>
-            <AppText>Bustrack App</AppText>
+            <Title>Bustrack App</Title>
             <View style={styles.form}>
               <FormTextInput
                 value={this.state.username}
@@ -104,7 +105,7 @@ export default class Signup extends React.Component {
                 onChangeText={this.handleEmailChange}
                 placeholder="Email"
               />
-              <FormTextInput
+              <FormPwdInput
                 value={this.state.password}
                 onChangeText={this.handlePasswordChange}
                 placeholder="Password"
@@ -114,7 +115,7 @@ export default class Signup extends React.Component {
                 onChangeText={this.handleServiceIdChange}
                 placeholder="Service Id"
               />
-              <LinkButton onPress={this.handleSubmit}>Sign Up</LinkButton>
+              <Button onPress={this.handleSubmit}>Sign Up</Button>
             </View>
             <Text>{errors}</Text>
             {this.renderResponse(response)}
